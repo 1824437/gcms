@@ -1,0 +1,7 @@
+<div :class="['m-filter-tip','js_validate',{'hide':isActiveClass}]" style="position: relative;">
+  <div class="" style="height: auto; width: auto; z-index: 11; display: block; position: absolute; bottom: 18px; left: 5px; width: 130px; ">
+
+  <div class="el-message" v-html="parcel.message" v-show="showMessage" style=" display: inline-block; -webkit-user-select: none;user-select: none; background: #ff4949; transform: none; position: initial; padding:3px 6px; color: #fff; font-weight: normal; line-height: 20px; min-width: auto;" @click="showMessage=false;"></div>
+</div>
+  <i class="el-alert__icon el-icon-warning error" @click="showMessage=true;"></i>
+</div>

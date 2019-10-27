@@ -1,0 +1,79 @@
+<div class="calendar">
+<div class="calendar_content">
+<h3 class="date">
+	<a class="pre_mouth" href="javascript:void(0)" data-node="prev">{{monthHeader.month.p.str}}月</a>
+		{{monthHeader.year}}-{{monthHeader.month.c.str}}
+	<label class="a_blue" data-node="sel">全选<input data-op="sel_all" data-node="sel"  class="hide" type="checkbox"></label>
+	<a class="next_mouth" href="javascript:void(0)" data-node="next">{{monthHeader.month.n.str}}月</a>
+</h3>
+<table class="calendar_date" cellspacing="0" cellpadding="0">
+	<thead>
+		<tr>
+			{{#mergeMonthData.weekHeaderLabel}}
+			<th{{#weekend}} class="weekday"{{/weekend}}>
+				<div class="box">
+					<span class="week">周{{t}}</span>
+					<span class="select_box"><input  data-node="sel" data-index="{{i}}"  class="hide" data-op="sel_week" type="checkbox"></span>
+				</div>
+			</th>
+			{{/mergeMonthData.weekHeaderLabel}}
+		</tr>
+	</thead>
+	<tbody>
+		{{#mergeMonthData.daysList}}
+		<tr>
+			{{#.}}
+				{{!非本月日期}}
+				{{#_otherMonth}}
+					<td><div class="box"></div></td>
+				{{/_otherMonth}}
+			
+				{{^_otherMonth}}
+					{{^_overdue}}
+					<td data-node="daybox" data-date="{{_date}}">
+					{{/_overdue}}
+					{{#_overdue}}
+					<td class="gray">
+					{{/_overdue}}
+					
+						<div class="box">
+							<span class="day">{{_day}}</span>
+							
+							
+							{{^_overdue}}
+								<span class="select_box"><input node="sel" data-node="sel" data-date="{{_date}}" data-index="{{_weekIndex}}" class="hide" type="checkbox"></span>
+							{{/_overdue}}
+							{{#st}}
+								{{#_overdue}}
+								<ul class="gray">
+								{{/_overdue}}
+								{{^_overdue}}
+								<ul>
+								{{/_overdue}}
+							{{/st}}
+							{{^st}}
+							<ul class="gray">
+							{{/st}}
+								{{#adult_price}}
+								<li>成人价：¥{{adult_price}}</li>
+								{{/adult_price}}
+								{{#child_price}}
+								<li>儿童价：¥{{child_price}}</li>
+								{{/child_price}}
+								{{#taocan_price}}
+								<li>套餐价：¥{{taocan_price}}</li>
+								{{/taocan_price}}
+								{{#count}}
+								<li>库存：{{count}}</li>
+								{{/count}}
+							</ul>
+						</div>
+					</td>
+				{{/_otherMonth}}
+			{{/.}}
+		</tr>
+		{{/mergeMonthData.daysList}}
+	</tbody>
+</table>
+</div>
+</div>

@@ -1,0 +1,33 @@
+<div class="dialog-x el-dialog__wrapper" :style="containerCss">
+  <div class="dialog-x-mask" :style="maskCss"></div>
+  <div class="dialog-x-blk el-dialog" :style="blockCss" ref="body">
+    <div class="el-dialog__header" style="background: #eee; padding: 0 15px; height: 36px; line-height: 36px">
+      <span class="el-dialog__title" style="font-size: 14px; color: #555;">{{title}}</span>
+      <a v-if="_showCloseBtn" type="button" style="position: absolute;
+        right:0;
+        top:0;
+        z-index: 2;
+        width:40px;
+        text-align: center;
+        height:36px;
+        line-height: 36px;
+        background-color: #f6f6f6;
+        color:#aaa;
+        font-size: 24px;" class="" @click="close">
+        <i class="el-dialog__close el-icon el-icon-close" style="color: #aaa; font-size: 16px"></i>
+      </a>
+    </div>
+    <div class="el-dialog__body"><slot>你想干啥！？</slot></div>
+    <div class="el-dialog__footer">
+      <div class="dialog-footer" :style="{'textAlign': centerButton? 'center' : 'right'}">
+        <button v-if="_showCancelBtn" type="button" class="el-button el-button--default" @click="cancel">
+          <span>取 消</span>
+        </button>
+        <button type="button" v-if="_showConfirmBtn" class="el-button el-button--primary" :style="confirmButtonStyle" @click="confirm">
+          <span>确 定</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

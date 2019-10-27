@@ -1,0 +1,18 @@
+<div style="display: inline-block;">
+  <input type="file" class="file" name="file" multiple="" style="display:none;" ref="inputFile">
+  <div class="el-alert el-alert--success" v-show="showSuccessTip"  style="padding:0 5px; display: inline-block; width: auto;">
+    <i class="el-alert__icon el-icon-circle-check"></i>
+    <div class="el-alert__content">
+      <span class="el-alert__title">{{successInfo}}</span>
+    </div>
+  </div>
+  <div class="el-alert el-alert--error"  v-show="showErrorTip" style="padding:0 5px; display: inline-block; width: auto;">
+    <i class="el-alert__icon el-icon-circle-cross"></i>
+    <div class="el-alert__content">
+      <span class="el-alert__title">{{errorInfo}}</span>
+    </div>
+  </div>
+  <div class="el-button-group" style="vertical-align: top;">
+    <button type="button" class="el-button el-button--b1 el-button--small" @click="upload">上传图片</button>
+  </div>
+</div>

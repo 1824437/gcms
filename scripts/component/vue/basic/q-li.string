@@ -1,0 +1,12 @@
+<div class="el-tabs__nav">
+  <div class="el-tabs__item"
+    v-for="item in tabs" 
+    :class="[{'is-active' : item.active}, {'is-disabled' : item.url=='' && !item.active}]"
+  >
+    <span v-if="item.url === '' || item.active"><i :class="'el-icon-'+item.icon" :style="item.iconStyle" v-if="item.active && item.icon"></i> {{item.text}}</span>
+    <a v-else class="nothing" :href="item.url">{{item.text}}</a>
+
+  </div>
+
+</div>
+

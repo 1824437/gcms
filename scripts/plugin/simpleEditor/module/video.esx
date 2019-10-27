@@ -1,0 +1,163 @@
+/*
+* @Author: tao.zhu
+* @Date: 2017-07-25
+* @Last Modified by: tao.zhu
+* @Last Modified time: 2017-08-03
+* @Description: 编辑器新增模块视频
+* @dependencies: 
+* @File Type: module
+* @Pmo: DUJIATTS-1878
+*/
+
+const Base=require("./base.js");
+const SelectVideoDlg = require("scriptRoot/business/utils/select_video/select_video");
+require("./string/simple_editor_video.mustache");
+
+/*
+	config={
+		//容器
+		//图片地址
+		url:"",
+		//图片支持的动作
+		action:{
+			clip:true,
+			moveup:true,
+			movedown:true,
+			delete:true,
+			replace:true
+		},
+		type:""//NormalImage||CustomImage
+		
+	}
+*/
+
+function Video(config){
+	if(!config.cover || !config.type){
+		return;
+	}
+	this.No=(Math.random()+"").replace("0.","");
+	this.type=config.type;
+	//图片的索引号
+	this.index,
+	//封面图地址
+	this.cover = config.cover,
+	//视频ID
+	this.videoId = config.videoId;
+	//所在group
+	this.group = config.group,
+	this.editor=this.group.editor,
+	//产生的DOM
+	this.dom,
+	//支持的动作
+	this.action=$.extend({
+		moveup:true,
+		movedown:true,
+		"delete":true,
+		replace:true
+	},config.action),
+
+	this.btn={},
+	//DOM的cls
+	this.className,
+	this.name = config.name;
+	
+	this.init(config);
+	
+}
+Video.prototype=new Base();
+
+Video.prototype.init=function(){
+	var str=QTMPL.simple_editor_video.render({className:this.className,cover:this.cover});
+	this.dom=$(str);
+	this.img=this.dom.find('[data-node=images]');
+	this.btn.moveup=this.dom.find('[data-node=moveup]');
+	this.btn.movedown=this.dom.find('[data-node=movedown]');
+	this.btn.replace=this.dom.find('[data-node=replace]');
+	this.btn.delete=this.dom.find('[data-node=delete]');
+	if(this.group){
+		this.group.dom.append(this.dom);
+	}else{
+	}
+
+
+	this.initEvent();
+};
+
+
+//替换
+Video.prototype.replace=function(videoObject){
+
+	this.cover=videoObject.cover;
+	this.videoId = videoObject.videoId;
+	this.img.attr("src", this.cover);
+
+	this.group && this.group.change();
+},
+Video.prototype.getData=function(){
+
+	return {
+		videoId: this.videoId,
+		cover: this.cover
+	};
+};
+
+Video.prototype.getHTMLData=function(){
+	var imgDom = this.img[0];
+	return imgDom?imgDom.outerHTML:'';
+}
+//初始化按钮事件
+Video.prototype.initEvent=function(){
+		let self=this;
+
+		this.btn.replace.click(() => {
+			SelectVideoDlg(videoObject => {
+				this.replace(videoObject);
+			});
+		});
+
+		//
+		this.btn.delete.click(function(){
+			
+			if (!confirm("请确认是否删除该视频?")){
+				return false;
+			}
+			if (self.type === "video"){
+				//删除组绑定
+				//self.group.deleteItem&&self.group.deleteItem(self.No);
+				self.group.del && self.group.del();
+			};
+			//删除组DOM
+			self.del();
+			self.editor.numOfVideo --;
+		});
+		this.btn.moveup.click(function(){
+			self.moveup();
+		});
+		this.btn.movedown.click(function(){
+			self.movedown();
+		});
+		//鼠标移上去后
+		this.dom.bind("mouseenter",function(){
+			self.showStatus("focus");
+
+		});
+		this.dom.bind("mouseleave",function(){
+			self.showStatus('clear');
+		});
+}
+
+Video.prototype.showStatus = function(status){
+	var $img = this.img;
+	$img.removeClass('focus-border plain-border');
+	switch(status){
+		case 'focus':
+			$img.addClass('focus-border');
+			break;
+		case 'clear':
+			$img.addClass('plain-border');
+			break;
+		default:
+			break;
+	}
+}
+module.exports = Video;

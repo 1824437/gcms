@@ -1,0 +1,28 @@
+<div class="m-image-list">
+
+  <div class="image-item" v-for="(item, ind) in parcel">
+    <div class="el-card">
+      <div class="el-card__body">
+        <img :src="item.url" class="image h65">
+        <div class="lh18">
+          <input type="text" v-model="item.desc" v-if="item.desc!==undefined">
+          <div class="bottom clearfix">
+            <button type="button" 
+            @click="ind===0 ? '' : change('up',ind)" 
+            :class="['el-button', 'button', 'el-button--text', 'el-button--small',{'is-disabled':ind===0}]">
+            <i class="el-icon-d-arrow-left"></i>
+            </button>
+            <button type="button" class="el-button button el-button--text el-button--small"
+            @click="change('delete',ind)"><i class="el-icon-delete2"></i></button>
+            <button type="button" 
+            @click="ind+1===parcel.length ? '' :change('down',ind)"
+            :class="['el-button', 'button', 'el-button--text', 'el-button--small',{'is-disabled':ind+1===parcel.length}]">
+            <i class="el-icon-d-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

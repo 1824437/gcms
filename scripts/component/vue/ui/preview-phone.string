@@ -1,0 +1,5 @@
+<div class="phone" id="js-phone-preview" v-if="isLoad">
+  <div class="textbox js-preview-content">
+    <iframe frameborder="0" :src="src" ref="frame"></iframe>
+  </div>
+</div>

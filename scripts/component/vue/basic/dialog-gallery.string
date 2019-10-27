@@ -1,0 +1,6 @@
+<div style="background: red; color: yellow;">
+<p>中华人民共和国</p>
+<p v-for="item in list">
+  {{item}}
+</p>
+</div>

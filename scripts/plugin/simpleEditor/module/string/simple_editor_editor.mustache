@@ -1,0 +1,64 @@
+<div class="editor">
+    <div class="editor-content-warning" style="display: none">
+        注意：系统对编辑器进行了改进，改进后会将以前编辑器录入的内容添加在新的编辑器里，但为了保证电脑和手机的效果，图片尺寸宽度不能小于750像素；<strong>以下标记为黄色边框的图片请重新上传，图片宽度不能小于750像素，否则编辑该页任何内容将无法保存</strong>
+    </div>
+    <div class="uploadTipBox js-editor-tips" style="display: none;"></div>
+	<div class="tools cf js-tools-container">
+		<div class="tool-item" data-node="insertEditor" title="点击添加文本信息">
+            <span class="addbtn"><small>+</small>文本</span>
+		</div>
+        <div class="tool-item js-add-standard-img" title="点击添加标准图片">
+            <div class="addbtn">
+                <input type="file" name="file" multiple data-node="insertNormalImage" class="file">
+                <small>+</small>标准图片
+            </div>
+            <div class="help-tips">
+                <div class="tips">
+                    <p class="title">添加标准图片（红色星号表示至少上传一张）</p>
+                    <p>上传标准图片时，要求图片尺寸为750(长) x 500（宽）; 如果您上传的图片尺寸>750x500且长宽比为3:2，依然可正常上传，系统会为您压缩好；如果您上传的图片>750x500但长宽比不成3：2，上传图片后，系统为您提供了裁切工具，方便您快速处理；标准图片系统会根据您上传图片的张数来优化排版，您可以调整文本或图片之间的位置</p>
+                </div>
+            </div>
+        </div>
+		<div class="tool-item js-add-custom-img" title="点击添加自定义图片">
+            <div class="addbtn">
+                <input type="file" name="file" multiple data-node="insertCustomImage" class="file">
+                <small>+</small>自定义图片
+            </div>
+            <div class="help-tips">
+                <div class="tips">
+                    <p class="title">添加自定义图片（红色星号表示至少上传一张）</p>
+                    <p>上传自定义图片，建议图片宽度为750像素，高度不限，系统会根据宽度等比例缩放，如果您上传的宽度小于750可能会影响您的图片展示给消费者的质量；上传的自定义图片会根据您的添加顺序自上而下垂直排列</p>
+                </div>
+            </div>
+        </div>
+        <div class="tool-item js-image-gallery" title="点击从图库中选择图片">
+            <div class="addbtn">
+                <small>+</small>图库选择
+            </div>
+            <div class="help-tips">
+                <div class="tips">
+                    <p>使用图库上传的图片会根据您的添加顺序自上而下垂直排列;系统会过滤掉图库中宽度小于750像素的图片;</p>
+                </div>
+            </div>
+        </div>
+        {{#canInsertVideo}}
+        <div class="tool-item" title="点击从视频库中选择视频">
+            <div class="addbtn" data-node="insertVideo">
+                <small>+</small>插入视频
+            </div>
+            <div class="help-tips">
+                <div class="tips">
+                    <p>只能上传一个视频</p>
+                </div>
+            </div>
+        </div>
+        {{/canInsertVideo}}
+        <div class="tool-item" title="点击进入全屏编辑">
+            <div class="fullscreen-btn js-fullscreen-btn"></div>
+        </div>
+	</div>
+	<div data-node="body" class="modbox cf"></div>
+	<div data-node="mask" class="mask" style="display:none;"></div>
+	<div class="popbox" style="display:none;"></div>
+
+</div>

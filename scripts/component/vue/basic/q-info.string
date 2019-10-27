@@ -1,0 +1,11 @@
+<div :class="['el-alert','el-alert--'+scheme]">
+  <i :class="['el-alert__icon', 'el-icon-'+scheme,'is-big']" v-show="scheme==='warning' || scheme==='error' || scheme ==='success' || scheme==='info'"></i>
+  <div class="el-alert__content">
+    <span class="el-alert__title is-bold">
+      <slot name="title"></slot>
+    </span>
+    <div class="el-alert__description">
+      <slot name="desc"></slot>
+    </div>
+  </div>
+</div>

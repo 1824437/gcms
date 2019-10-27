@@ -1,0 +1,5 @@
+<div style="display: inline-block;">
+  <div class="el-button-group" style="vertical-align: top;">
+    <button type="button" class="el-button el-button--b1 el-button--small" @click="add">添加视频</button>
+  </div>
+</div>

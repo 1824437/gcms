@@ -1,0 +1,1 @@
+<input type="text" class="form-txtctr" :style="inputStyle" v-suggest="suggest" @focus="focus" @keyup.delete="clear" ref="input" :value="value" :placeholder="placeholder||''" @blur="blur">

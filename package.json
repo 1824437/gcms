@@ -1,0 +1,9 @@
+{
+  "name": "gcm",
+  "version": "1.0.0",
+  "description": "前端包",
+  "main": "index.js",
+  "repository": "https://github.com/1824437/gcm.git",
+  "author": "zhutao@live.cn",
+  "license": "MIT"
+}

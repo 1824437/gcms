@@ -1,0 +1,10 @@
+<div class="m-tags" style="text-align: center;">
+  <div class="text">
+      <span class="iconfont ico-ok">&#xf009;</span>
+      <span class="txt">发布成功 请在手机端查看</span>
+
+  </div>
+  <div class="tips">
+      {{time}}秒后自动关闭当前页面
+  </div>
+</div>
